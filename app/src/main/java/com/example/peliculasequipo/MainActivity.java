@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         float jose = 12.5f;
 
-        int sus = 22; 
+        int sus = 22;
+        int sas = 1;
     }
 }
