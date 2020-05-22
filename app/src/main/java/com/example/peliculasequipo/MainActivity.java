@@ -20,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         int sus = 22;
         int sas = 1;
+
+        String x = "jddbs";
     }
 }
