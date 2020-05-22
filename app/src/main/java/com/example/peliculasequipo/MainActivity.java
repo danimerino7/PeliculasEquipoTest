@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Datos> call, Response<Datos> response) {
                 Datos misDatos = response.body();
-                List<Pelicula> listado = misDatos.getResults();
-                adapter.setLista(listado);
+                List<Pelicula> lista = misDatos.getResults();
+                adapter.setLista(lista);
             }
 
             @Override
