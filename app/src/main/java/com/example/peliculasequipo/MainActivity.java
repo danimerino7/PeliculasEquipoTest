@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         //comentario
         String prueba="www";
         int pu;
+        int a;
 
     }
 }
