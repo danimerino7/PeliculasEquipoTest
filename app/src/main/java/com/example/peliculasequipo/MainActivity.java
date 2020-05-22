@@ -22,5 +22,6 @@ public class MainActivity extends AppCompatActivity {
         int sas = 1;
 
         String x = "jddbs";
+        String y = "jjjd";
     }
 }
