@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
         String prueba="www";
         int pu;
         int a;
+        boolean j = true;
         
     }
 }
