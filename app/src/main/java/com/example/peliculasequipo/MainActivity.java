@@ -1,12 +1,16 @@
 package com.example.peliculasequipo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.peliculasequipo.models.Datos;
 import com.example.peliculasequipo.models.Pelicula;
@@ -25,9 +29,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    String prueba =" ssss";
-
-
     private Retrofit retrofit;
     private HttpLoggingInterceptor loggingInterceptor;
     private OkHttpClient.Builder httpClientBuilder;
@@ -36,13 +37,33 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recycler;
     private AdapterPelicula adapter;
 
+    private CardView primerBoton;
+    private CardView segunBoton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        primerBoton = findViewById(R.id.primerBoton);
+        segunBoton = findViewById(R.id.segunBoton);
+
         lanzarPeticion();
         setupView();
+
+
+
+    primerBoton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i = new Intent(MainActivity.this, EstrenosActivity.class);
+            startActivity(i);
+        }
+    });
+
+
+
+
     }
 
     private void lanzarPeticion(){
@@ -56,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         WebServiceClient client = retrofit.create(WebServiceClient.class);
 
-        Call<Datos> peticion = client.getPeliculasP();
+        Call<Datos> peticion = client.getPeliculasP(WebServiceClient.token, "es-ES");
         peticion.enqueue(new Callback<Datos>() {
             @Override
             public void onResponse(Call<Datos> call, Response<Datos> response) {
@@ -79,6 +100,5 @@ public class MainActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
-
     }
 }
