@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         WebServiceClient client = retrofit.create(WebServiceClient.class);
 
-        Call<Datos> peticion = client.getPeliculasP();
+        Call<Datos> peticion = client.getPeliculasP(WebServiceClient.token, "es-ES");
         peticion.enqueue(new Callback<Datos>() {
             @Override
             public void onResponse(Call<Datos> call, Response<Datos> response) {
