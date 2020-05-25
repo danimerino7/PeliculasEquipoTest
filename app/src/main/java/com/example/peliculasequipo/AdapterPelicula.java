@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.peliculasequipo.models.Pelicula;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
     @NonNull
     @Override
     public AdapterPelicula.PeliculaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlist, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlist3, parent, false);
         PeliculaHolder holder = new PeliculaHolder(itemView);
         return holder;
     }
@@ -39,7 +40,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
         holder.voteTV.setText(pelicula.getVote_average());
         holder.sinopsisTV.setText(pelicula.getOverview());
         holder.dateTV.setText(pelicula.getRelease_date());
-        //Picasso()
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imgCabecera);
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Pelicula implements Parcelable {
     private int id;
 
     @SerializedName("popularity")
-    private int popularity;
+    private float popularity;
 
     @SerializedName("title")
     private String title;
@@ -25,13 +25,27 @@ public class Pelicula implements Parcelable {
     @SerializedName("overview")
     private String overview;
 
+    @SerializedName("poster_path")
+    private String poster_path;
+
+    public Pelicula(int id, float popularity, String title, String vote_average, String release_date, String overview, String poster_path) {
+        this.id = id;
+        this.popularity = popularity;
+        this.title = title;
+        this.vote_average = vote_average;
+        this.release_date = release_date;
+        this.overview = overview;
+        this.poster_path = poster_path;
+    }
+
     protected Pelicula(Parcel in) {
         id = in.readInt();
-        popularity = in.readInt();
+        popularity = in.readFloat();
         title = in.readString();
         vote_average = in.readString();
         release_date = in.readString();
         overview = in.readString();
+        poster_path = in.readString();
     }
 
     public static final Creator<Pelicula> CREATOR = new Creator<Pelicula>() {
@@ -54,11 +68,11 @@ public class Pelicula implements Parcelable {
         this.id = id;
     }
 
-    public int getPopularity() {
+    public float getPopularity() {
         return popularity;
     }
 
-    public void setPopularity(int popularity) {
+    public void setPopularity(float popularity) {
         this.popularity = popularity;
     }
 
@@ -94,6 +108,14 @@ public class Pelicula implements Parcelable {
         this.overview = overview;
     }
 
+    public String getPoster_path() {
+        return poster_path;
+    }
+
+    public void setPoster_path(String poster_path) {
+        this.poster_path = poster_path;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -102,10 +124,11 @@ public class Pelicula implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(id);
-        dest.writeInt(popularity);
+        dest.writeFloat(popularity);
         dest.writeString(title);
         dest.writeString(vote_average);
         dest.writeString(release_date);
         dest.writeString(overview);
+        dest.writeString(poster_path);
     }
 }
