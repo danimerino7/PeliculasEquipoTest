@@ -28,7 +28,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
     @NonNull
     @Override
     public AdapterPelicula.PeliculaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlist, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.itemlist3, parent, false);
         PeliculaHolder holder = new PeliculaHolder(itemView);
         return holder;
     }
@@ -40,7 +40,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
         holder.voteTV.setText(pelicula.getVote_average());
         holder.sinopsisTV.setText(pelicula.getOverview());
         holder.dateTV.setText(pelicula.getRelease_date());
-        Picasso.get().load("https://image.tmdb.org/t/p/w300/"+pelicula.getPoster_path()).into(holder.imgCabecera);
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imgCabecera);
     }
 
     @Override
