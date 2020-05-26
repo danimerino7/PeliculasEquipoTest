@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.peliculasequipo.models.Pelicula;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,13 +37,29 @@ public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.Estren
     @Override
     public void onBindViewHolder(@NonNull AdapterEstrenos.EstrenoHolder holder, int position) {
         final Pelicula pelicula = peliculaList.get(position);
-        holder.imagen.setImageResource(pelicula.getId());
+
         holder.titulo.setText(pelicula.getTitle());
         holder.fecha.setText(String.valueOf(pelicula.getRelease_date()));
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imagen);
+
+
+      holder.itemView.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Toast.makeText(context, "Disponible a partir del " +pelicula.getRelease_date(), Toast.LENGTH_SHORT).show();
+          }
+      });
+
     }
 
     @Override
     public int getItemCount() { return peliculaList.size(); }
+
+    public void setPeliculaList(List<Pelicula> lista){
+        this.peliculaList = lista;
+        notifyDataSetChanged();
+
+    }
 
     static class EstrenoHolder extends RecyclerView.ViewHolder{
         private ImageView imagen;
@@ -53,6 +73,7 @@ public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.Estren
             titulo = itemView.findViewById(R.id.titulo);
             fecha = itemView.findViewById(R.id.fecha_estreno);
             imagen = itemView.findViewById(R.id.portada);
+            
         }
     }
 

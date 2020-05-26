@@ -1,9 +1,13 @@
 package com.example.peliculasequipo.webservice;
 
 import com.example.peliculasequipo.models.Datos;
+import com.example.peliculasequipo.models.Pelicula;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface WebServiceClient {
@@ -12,4 +16,11 @@ public interface WebServiceClient {
 
     @GET("movie/popular")
     Call<Datos> getPeliculasP(@Query("api_key")String tokenn, @Query("language") String lng);
+
+    //estrenos
+    @GET("/movie/{movie_id}/release_dates")
+    Call<List<Pelicula>> getReleasesDates(@Path("movie_id") int movie_id, @Query("api_key") String token);
+
+
+
 }
