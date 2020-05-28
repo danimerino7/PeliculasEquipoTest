@@ -23,7 +23,7 @@
         android:layout_width="112dp"
         android:layout_height="27dp"
         android:layout_marginBottom="116dp"
-        android:text="Lanzamiento en:"
+        android:text="Lanzamientos:"
         android:textColor="#FFC107"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/fecha_estreno4"
+        android:id="@+id/eeuu"
         android:layout_width="134dp"
         android:layout_height="22dp"
         android:gravity="center"
@@ -51,11 +51,11 @@
         android:id="@+id/imageView6"
         android:layout_width="23dp"
         android:layout_height="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fecha_estreno5"
-        app:layout_constraintEnd_toStartOf="@+id/fecha_estreno4"
+        app:layout_constraintBottom_toBottomOf="@+id/japon"
+        app:layout_constraintEnd_toStartOf="@+id/eeuu"
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fecha_estreno5"
+        app:layout_constraintTop_toTopOf="@+id/japon"
         app:layout_constraintVertical_bias="0.333"
         app:srcCompat="@drawable/japon" />
 
@@ -79,11 +79,11 @@
         android:id="@+id/imageView"
         android:layout_width="23dp"
         android:layout_height="25dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fecha_estreno4"
-        app:layout_constraintEnd_toStartOf="@+id/fecha_estreno4"
+        app:layout_constraintBottom_toBottomOf="@+id/eeuu"
+        app:layout_constraintEnd_toStartOf="@+id/eeuu"
         app:layout_constraintHorizontal_bias="0.839"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/fecha_estreno4"
+        app:layout_constraintTop_toTopOf="@+id/eeuu"
         app:layout_constraintVertical_bias="0.666"
         app:srcCompat="@drawable/bandera" />
 
@@ -100,7 +100,7 @@
         app:srcCompat="@drawable/espana" />
 
     <TextView
-        android:id="@+id/fecha_estreno5"
+        android:id="@+id/japon"
         android:layout_width="134dp"
         android:layout_height="22dp"
         android:gravity="center"

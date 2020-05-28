@@ -1,16 +1,21 @@
-package com.example.peliculasequipo;
+package com.example.peliculasequipo.models;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.peliculasequipo.models.Pelicula;
+import com.example.peliculasequipo.EstrenosActivity;
+import com.example.peliculasequipo.MainActivity;
+import com.example.peliculasequipo.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -41,6 +46,15 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
         holder.sinopsisTV.setText(pelicula.getOverview());
         holder.dateTV.setText(pelicula.getRelease_date());
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imgCabecera);
+        
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Peliculas similares actividad"+peliculas.get(position), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     @Override
@@ -58,6 +72,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
 
         ImageView imgCabecera;
         TextView titleTV, voteTV, sinopsisTV, dateTV;
+        CardView cardView;
 
         public PeliculaHolder(@NonNull View v) {
             super(v);
@@ -66,6 +81,11 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
             voteTV = v.findViewById(R.id.voteTV);
             sinopsisTV = v.findViewById(R.id.sinopsisTV);
             dateTV = v.findViewById(R.id.dateTV);
+            cardView = v.findViewById(R.id.cardview);
+            
+
+
+
         }
     }
 }

@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".EstrenosActivity" />
+        <activity android:name=".ProximamenteActivity" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.peliculasequipo;
+package com.example.peliculasequipo.modelosEstreno;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,19 +11,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.peliculasequipo.R;
 import com.example.peliculasequipo.models.Pelicula;
 import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.EstrenoHolder> {
-
+    private List<Releasesdates> releasesdatesList;
     private List<Pelicula> peliculaList;
     private Context context;
 
     public AdapterEstrenos(Context context) {
         peliculaList = new ArrayList<>();
+        releasesdatesList = new ArrayList<>();
         this.context = context;
     }
 
@@ -37,15 +39,20 @@ public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.Estren
     @Override
     public void onBindViewHolder(@NonNull AdapterEstrenos.EstrenoHolder holder, int position) {
         final Pelicula pelicula = peliculaList.get(position);
+//        Releasesdates releasesdates = releasesdatesList.get(position);
 
         holder.titulo.setText(pelicula.getTitle());
         holder.fecha.setText(String.valueOf(pelicula.getRelease_date()));
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imagen);
 
+        holder.usa.setText("fecha usa");
+        holder.japan.setText("fecha japon");
+
 
       holder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
+
               Toast.makeText(context, "Disponible a partir del " +pelicula.getRelease_date(), Toast.LENGTH_SHORT).show();
           }
       });
@@ -67,14 +74,25 @@ public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.Estren
         private TextView titulo;
         private ConstraintLayout layout;
 
+        //lanzamientos
+        private TextView usa;
+        private TextView japan;
+
         public EstrenoHolder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.constraitlayout);
             titulo = itemView.findViewById(R.id.titulo);
             fecha = itemView.findViewById(R.id.fecha_estreno);
             imagen = itemView.findViewById(R.id.portada);
+
+            usa = itemView.findViewById(R.id.eeuu);
+            japan = itemView.findViewById(R.id.japon);
+
+
             
         }
     }
+
+
 
 }

@@ -2,20 +2,19 @@ package com.example.peliculasequipo;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.peliculasequipo.modelosEstreno.AdapterEstrenos;
+import com.example.peliculasequipo.modelosEstreno.Estreno;
+import com.example.peliculasequipo.modelosEstreno.Releasesdates;
+import com.example.peliculasequipo.modelosEstreno.Results;
 import com.example.peliculasequipo.models.Datos;
 import com.example.peliculasequipo.models.Pelicula;
 import com.example.peliculasequipo.webservice.WebServiceClient;
@@ -30,7 +29,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.Path;
 
 
 public class EstrenosActivity extends AppCompatActivity {
@@ -42,6 +40,12 @@ public class EstrenosActivity extends AppCompatActivity {
     private TextView back;
     private RecyclerView recyclerView;
     private AdapterEstrenos adapter;
+
+    //no se si necesito esto
+    private List<Estreno> estrenoList;
+    private Results results;
+    private Releasesdates releasesdates;
+    /////
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,25 +81,30 @@ public class EstrenosActivity extends AppCompatActivity {
 
         //llamada para estrenos id y token recibe la llamada
         /*
-        Call<Pelicula> estrenos = client.getReleasesDates(peliculaList.get(id),WebServiceClient.token);
-        estrenos.enqueue(new Callback<Pelicula>() {
-            @Override
-            public void onResponse(Call<Pelicula> call, Response<Pelicula> response) {
+        Pelicula pelicula;
+       Call<Estreno> estrenos = client.getReleasesDates(pelicula.getId(),WebServiceClient.token);
+       estrenos.enqueue(new Callback<Estreno>() {
+           @Override
+           public void onResponse(Call<Estreno> call, Response<Estreno> response) {
+               Releasesdates lanzamientos = response.body();
+               List<Estreno> = lanzamientos.getRelease_date();
+               adapter.setPeliculaList(lanzamientos);
+           }
 
-            }
+           @Override
+           public void onFailure(Call<Estreno> call, Throwable t) {
 
-            @Override
-            public void onFailure(Call<Pelicula> call, Throwable t) {
-
-            }
-        });
-         */
+           }
+       });
+            */
+       /////////////////////////////////////////////////
 
 
         Call<Datos> peticion = client.getPeliculasP(WebServiceClient.token, "es-ES");
         peticion.enqueue(new Callback<Datos>() {
             @Override
             public void onResponse(Call<Datos> call, Response<Datos> response) {
+
                 Datos misDatos = response.body();
                 List<Pelicula> lista = misDatos.getResults();
                 adapter.setPeliculaList(lista);
@@ -106,13 +115,9 @@ public class EstrenosActivity extends AppCompatActivity {
                 Log.d("RETROFIT", "Error: " + t.getMessage());
             }
         });
-
-
-
     }
 
     private void setupEstrenos(){
-
         //configuracion recyclerview
         recyclerView = findViewById(R.id.recycler);
         peliculaList = new ArrayList<>();
@@ -120,8 +125,6 @@ public class EstrenosActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager2);
         adapter = new AdapterEstrenos(this);
         recyclerView.setAdapter(adapter);
-
-
     }
 
 

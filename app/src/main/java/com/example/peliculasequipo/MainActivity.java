@@ -2,7 +2,6 @@ package com.example.peliculasequipo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,8 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
+import com.example.peliculasequipo.models.AdapterPelicula;
 import com.example.peliculasequipo.models.Datos;
 import com.example.peliculasequipo.models.Pelicula;
 import com.example.peliculasequipo.webservice.WebServiceClient;
@@ -58,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent i = new Intent(MainActivity.this, EstrenosActivity.class);
             startActivity(i);
+        }
+    });
+
+    segunBoton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent i2 = new Intent(MainActivity.this, ProximamenteActivity.class);
+            startActivity(i2);
         }
     });
 
