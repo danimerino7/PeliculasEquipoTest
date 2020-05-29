@@ -2,6 +2,7 @@ package com.example.peliculasequipo.webservice;
 
 import com.example.peliculasequipo.models.Datos;
 import com.example.peliculasequipo.models.Pelicula;
+import com.example.peliculasequipo.models.Similares;
 import com.example.peliculasequipo.models2.Datos2;
 
 import java.util.List;
@@ -25,6 +26,11 @@ public interface WebServiceClient {
 
     @GET("movies/get-upcoming")
     Call<Datos2> getEstrenos(@Query("api_key")String token, @Query("language") String lng);
+
+    //Similares
+    @GET("movie/{movie_id}/similar")
+    Call<Similares> getSimilar(@Path("movie_id") int movie_id, @Query("api_key") String token);
+
 
     //probe esto pero nada y con la url esa si carga el objeto
     //Call<Datos2> getEstrenos(@Query("api_key")String token, @Query("language") String lng, @Query("page=") int page);

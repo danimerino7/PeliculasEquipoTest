@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".EstrenosActivity" />
         <activity android:name=".ProximamenteActivity" />
+        <activity android:name=".SimilaresActivity" />
     </application>
 
 </manifest>
