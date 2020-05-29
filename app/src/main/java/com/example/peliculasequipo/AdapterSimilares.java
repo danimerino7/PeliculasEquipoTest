@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +45,10 @@ public class AdapterSimilares extends RecyclerView.Adapter<AdapterSimilares.Simi
        holder.fechaSimilar.setText(results.getRelease_date());
        holder.valSimilar.setText(String.valueOf(results.getPopularity()));
        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+results.getPoster_path()).into(holder.imagenSimilar);
+
+
+
+
        if(results.isAdult()){
            holder.adultSimilar.setVisibility(View.VISIBLE);
        }else{
@@ -66,6 +71,7 @@ public class AdapterSimilares extends RecyclerView.Adapter<AdapterSimilares.Simi
 
         private ImageView imagenSimilar, adultSimilar;
         private TextView tituloSimilar, fechaSimilar, valSimilar;
+        private TextView back;
 
         public SimilaresHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,6 +81,7 @@ public class AdapterSimilares extends RecyclerView.Adapter<AdapterSimilares.Simi
             tituloSimilar = itemView.findViewById(R.id.tituloSimilar);
             fechaSimilar = itemView.findViewById(R.id.fechaSimilar);
             valSimilar = itemView.findViewById(R.id.valSimilar);
+
         }
     }
 }

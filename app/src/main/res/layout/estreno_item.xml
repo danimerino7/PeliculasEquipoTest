@@ -5,7 +5,7 @@
     android:id="@+id/constraitlayout"
     android:layout_width="match_parent"
     android:layout_height="300dp"
-    android:background="#D9073C7C">
+    android:background="#E41D4364">
 
     <ImageView
         android:id="@+id/portada"

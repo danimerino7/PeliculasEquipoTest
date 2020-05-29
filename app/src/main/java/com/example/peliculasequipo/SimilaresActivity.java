@@ -2,6 +2,9 @@ package com.example.peliculasequipo;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,6 +32,7 @@ public class SimilaresActivity extends AppCompatActivity {
     private OkHttpClient.Builder httpClient;
     private RecyclerView recyclerView;
     private AdapterSimilares adapter;
+    private TextView back;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,6 +41,15 @@ public class SimilaresActivity extends AppCompatActivity {
 
         lanzarSimilares();
         setupSimilares();
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
     }
 

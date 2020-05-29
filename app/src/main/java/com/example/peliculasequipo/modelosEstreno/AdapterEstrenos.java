@@ -45,8 +45,8 @@ public class AdapterEstrenos extends RecyclerView.Adapter<AdapterEstrenos.Estren
         holder.fecha.setText(String.valueOf(pelicula.getRelease_date()));
         Picasso.get().load("https://image.tmdb.org/t/p/w500/"+pelicula.getPoster_path()).into(holder.imagen);
 
-        holder.usa.setText("fecha usa");
-        holder.japan.setText("fecha japon");
+        holder.usa.setText("21-07-2022");
+        holder.japan.setText("3-11-2021");
 
 
       holder.itemView.setOnClickListener(new View.OnClickListener() {

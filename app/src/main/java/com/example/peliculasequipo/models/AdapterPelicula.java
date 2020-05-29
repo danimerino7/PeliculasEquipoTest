@@ -52,7 +52,8 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "Peliculas similares actividad"+peliculas.get(position), Toast.LENGTH_SHORT).show();
+               Intent i = new Intent(context, SimilaresActivity.class);
+
 
             }
         });

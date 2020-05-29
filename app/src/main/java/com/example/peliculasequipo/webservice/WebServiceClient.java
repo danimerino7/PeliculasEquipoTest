@@ -24,8 +24,8 @@ public interface WebServiceClient {
     @GET("/movie/{movie_id}/release_dates")
     Call<List<Pelicula>> getReleasesDates(@Path("movie_id") int movie_id, @Query("api_key") String token);
 
-    @GET("movies/get-upcoming")
-    Call<Datos2> getEstrenos(@Query("api_key")String token, @Query("language") String lng);
+    @GET("movie/upcoming")
+    Call<Datos2> getEstrenos(@Query("api_key")String token);
 
     //Similares
     @GET("movie/{movie_id}/similar")

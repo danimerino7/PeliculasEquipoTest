@@ -2,6 +2,9 @@ package com.example.peliculasequipo;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,11 +34,24 @@ public class ProximamenteActivity extends AppCompatActivity {
     private List<Proximo> proximamenteList;
     private RecyclerView recycler;
     private AdapterProximamente adapter;
+    private TextView back;
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.proximamente_layout);
+
+
+        Toast.makeText(ProximamenteActivity.this, "Haz click sobre la imagen para saber fecha de estreno", Toast.LENGTH_SHORT).show();
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         lanzarPeticionEstreno();
@@ -54,7 +70,7 @@ public class ProximamenteActivity extends AppCompatActivity {
                 .build();
         WebServiceClient client = retrofit.create(WebServiceClient.class);
         // es-ES&page=
-        Call<Datos2> peticionEstrenos = client.getEstrenos(WebServiceClient.token,"es-ES");
+        Call<Datos2> peticionEstrenos = client.getEstrenos(WebServiceClient.token);
         peticionEstrenos.enqueue(new Callback<Datos2>() {
             @Override
             public void onResponse(Call<Datos2> call, Response<Datos2> response) {

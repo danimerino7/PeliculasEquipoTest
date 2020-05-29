@@ -17,14 +17,18 @@ public class Proximo implements Parcelable {
     @SerializedName("overview")
     private String overview;
 
+    @SerializedName("release_date")
+    private String release_date;
+
     @SerializedName("poster_path")
     private String poster_path;
 
 
-    public Proximo(int id, String title, String overview, String poster_path) {
+    public Proximo(int id, String title, String overview,String release_date, String poster_path) {
         this.id = id;
         this.title = title;
         this.overview = overview;
+        this.release_date = release_date;
         this.poster_path = poster_path;
     }
 
@@ -32,6 +36,7 @@ public class Proximo implements Parcelable {
         id = in.readInt();
         title = in.readString();
         overview = in.readString();
+        release_date = in.readString();
         poster_path = in.readString();
     }
 
@@ -47,11 +52,11 @@ public class Proximo implements Parcelable {
         }
     };
 
-    public int getId() {
+    public int getIdEstreno() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setIdEstreno(int id) {
         this.id = id;
     }
 
@@ -71,6 +76,10 @@ public class Proximo implements Parcelable {
         this.overview = overview;
     }
 
+    public String getRelease_date() { return release_date; }
+
+    public void setRelease_date(String release_date) { this.release_date = release_date; }
+
     public String getPoster_path() {
         return poster_path;
     }
@@ -87,6 +96,7 @@ public class Proximo implements Parcelable {
         dest.writeInt(id);
         dest.writeString(title);
         dest.writeString(overview);
+        dest.writeString(release_date);
         dest.writeString(poster_path);
     }
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -40,9 +41,14 @@ public class AdapterProximamente extends RecyclerView.Adapter<AdapterProximament
 
         Proximo proximo = proximos.get(position);
         holder.titulopeli.setText(proximo.getTitle());
-        holder.poster_path.setText(proximo.getPoster_path());
-        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+proximo.getPoster_path()).into(holder.portada);
 
+        Picasso.get().load("https://image.tmdb.org/t/p/w500/"+proximo.getPoster_path()).into(holder.portada);
+        holder.portada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, ""+proximo.getRelease_date(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -62,7 +68,7 @@ public class AdapterProximamente extends RecyclerView.Adapter<AdapterProximament
         //delcarar elementos list
         ImageView portada;
         TextView titulopeli;
-        TextView poster_path;
+
         LinearLayout layout;
 
         public ProximamenteHolder(@NonNull View v) {
@@ -71,7 +77,7 @@ public class AdapterProximamente extends RecyclerView.Adapter<AdapterProximament
             //aociar ids aesos
             portada = v.findViewById(R.id.portadapeli);
             titulopeli = v.findViewById(R.id.titulopeli);
-            poster_path = v.findViewById(R.id.poster_path);
+
             layout = v.findViewById(R.id.layoutitem);
 
 
