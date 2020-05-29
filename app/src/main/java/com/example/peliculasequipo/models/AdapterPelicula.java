@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.peliculasequipo.EstrenosActivity;
 import com.example.peliculasequipo.MainActivity;
 import com.example.peliculasequipo.R;
+import com.example.peliculasequipo.SimilaresActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -55,6 +57,15 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
             }
         });
 
+        holder.peliculasSimilares.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, SimilaresActivity.class);
+                i.putExtra("similares", pelicula.getId());
+                context.startActivity(i);
+            }
+        });
+
     }
 
     @Override
@@ -73,6 +84,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
         ImageView imgCabecera;
         TextView titleTV, voteTV, sinopsisTV, dateTV;
         CardView cardView;
+        Button peliculasSimilares;
 
         public PeliculaHolder(@NonNull View v) {
             super(v);
@@ -82,7 +94,7 @@ public class AdapterPelicula extends RecyclerView.Adapter<AdapterPelicula.Pelicu
             sinopsisTV = v.findViewById(R.id.sinopsisTV);
             dateTV = v.findViewById(R.id.dateTV);
             cardView = v.findViewById(R.id.cardview);
-            
+            peliculasSimilares = v.findViewById(R.id.similaresBoton);
 
 
 

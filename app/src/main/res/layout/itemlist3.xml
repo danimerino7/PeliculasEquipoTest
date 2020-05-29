@@ -104,6 +104,16 @@
                             android:textColor="#FFFFFF" />
                     </LinearLayout>
 
+                    <Button
+                        android:id="@+id/similaresBoton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Peliculas Similares" />
+
                 </LinearLayout>
 
             </LinearLayout>

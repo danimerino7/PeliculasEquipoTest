@@ -27,7 +27,6 @@ public class SimilaresActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private HttpLoggingInterceptor loggingInterceptor;
     private OkHttpClient.Builder httpClient;
-
     private RecyclerView recyclerView;
     private AdapterSimilares adapter;
 
@@ -42,6 +41,13 @@ public class SimilaresActivity extends AppCompatActivity {
     }
 
     private void lanzarSimilares(){
+
+        int id = 0;
+        Bundle b = getIntent().getExtras();
+        if(b != null && b.containsKey("similares")){
+            id = b.getInt("similares");
+        }
+
         loggingInterceptor = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient = new OkHttpClient.Builder().addInterceptor(loggingInterceptor);
 
@@ -52,7 +58,7 @@ public class SimilaresActivity extends AppCompatActivity {
                 .build();
         WebServiceClient client = retrofit.create(WebServiceClient.class);
 
-        Call<Similares> llamada = client.getSimilar(106912, WebServiceClient.token);
+        Call<Similares> llamada = client.getSimilar(id, WebServiceClient.token);
         llamada.enqueue(new Callback<Similares>() {
             @Override
             public void onResponse(Call<Similares> call, Response<Similares> response) {
